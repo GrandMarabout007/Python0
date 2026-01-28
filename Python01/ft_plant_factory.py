@@ -1,20 +1,23 @@
 class Plant:
-    def __init__(self, name, height, age):
+    def __init__(self, name: str, height: int, age: int) -> None:
         self.name = name
         self.height = height
         self.age = age
 
-    def grow(self):
+    def grow(self) -> None:
         self.height = self.height + 1
 
-    def aging(self):
+    def aging(self) -> None:
         self.age += 1
 
-    def get_info(self):
+    def get_info(self) -> tuple[str, int, int]:
         return self.name, self.height, self.age
 
+    def __repr__(self) -> str:
+        return (f"Created: {self.name} ({self.height}cm, {self.age} days)")
 
-def ft_plant_factory():
+
+def ft_plant_factory() -> None:
     plants = [
         ("Rose", 25, 30),
         ("Oak", 200, 365),
@@ -28,10 +31,11 @@ def ft_plant_factory():
         new_plant = Plant(name_x, height_y, age_z)
         garden.append(new_plant)
 
+    # for infos in plants:
+    #     new_plant = Plant(*infos)
     total = 0
     for plant in garden:
-        x, y, z = plant.get_info()
-        print(f"Created: {x} ({y}cm, {z} days)")
+        print(plant)
         total = total + 1
     print(f"Total plants created: {total}")
 

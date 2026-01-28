@@ -1,11 +1,11 @@
 class Plant:
-    def __init__(self, name, height, age):
+    def __init__(self, name: str, height: int, age: int) -> None:
         self.name = name
         self.height = height
         self.age = age
 
 
-def ft_garden_data():
+def ft_garden_data() -> None:
 
     plant1 = Plant("Corn", 260, 63)
     plant2 = Plant("Wheat", 26, 32)

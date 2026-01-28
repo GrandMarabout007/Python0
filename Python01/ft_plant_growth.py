@@ -1,16 +1,28 @@
+# ************************************************************************* #
+#                                                                           #
+#                                                      :::      ::::::::    #
+#  ft_plant_growth.py                                :+:      :+:    :+:    #
+#                                                  +:+ +:+         +:+      #
+#  By: rschimme <rschimme@student.42.fr>         +#+  +:+       +#+         #
+#                                              +#+#+#+#+#+   +#+            #
+#  Created: 2026/01/27 15:48:40 by rschimme        #+#    #+#               #
+#  Updated: 2026/01/27 15:50:36 by rschimme        ###   ########.fr        #
+#                                                                           #
+# ************************************************************************* #
+
 class Plant:
-    def __init__(self, name, height, age):
+    def __init__(self, name: str, height: int, age: int) -> None:
         self.name = name
         self.height = height
         self.age = age
 
-    def grow(self):
+    def grow(self) -> None:
         self.height = self.height + 1
 
-    def aging(self):
+    def aging(self) -> None:
         self.age += 1
 
-    def get_info(self):
+    def get_info(self) -> tuple[str, int, int]:
         return self.name, self.height, self.age
 
 
