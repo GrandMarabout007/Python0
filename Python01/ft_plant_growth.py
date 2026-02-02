@@ -6,7 +6,7 @@
 #  By: rschimme <rschimme@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/01/27 15:48:40 by rschimme        #+#    #+#               #
-#  Updated: 2026/02/02 16:47:16 by rschimme        ###   ########.fr        #
+#  Updated: 2026/02/02 17:16:45 by rschimme        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -35,7 +35,7 @@ class Plant:
     def get_info(self) -> str:
         return f"{self.name}: {self.height}cm, {self.age} days old"
 
-    def week_simulate(self) -> int:
+    def week_simulate(self) -> None:
         for i in range(7):
             self.grow(self.growth_speed)
             self.aging()
