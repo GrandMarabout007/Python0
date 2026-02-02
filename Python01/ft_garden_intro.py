@@ -1,11 +1,18 @@
 def ft_garden_intro():
+    """Print all plant's datas.
+
+    Variables:
+        name (str): plant name
+        age (int): plant age, in days
+        height (int): plant height, in cm
+    """
     name: str = "Rose"
-    height: str = "25 cm"
-    age: str = "30 days"
+    height: int = 25
+    age: int = 30
 
     print(f"Plant: {name}")
-    print(f"Height: {height}")
-    print(f"Age: {age}")
+    print(f"Height: {height}cm")
+    print(f"Age: {age} days")
 
 
 if __name__ == "__main__":

@@ -6,7 +6,7 @@
 #  By: rschimme <rschimme@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/01/28 17:41:32 by rschimme        #+#    #+#               #
-#  Updated: 2026/01/28 20:20:14 by rschimme        ###   ########.fr        #
+#  Updated: 2026/01/30 17:54:10 by rschimme        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -26,7 +26,7 @@ class Plant:
 
     def set_age(self, value: int) -> None:
         if value > 0:
-            self.age = value
+            self.__age = value
             print(f"Age updated: {value} days [OK]")
         else:
             print(f"Invalid operation attempted: age {value} days [REJECTED]")
@@ -44,23 +44,31 @@ class Plant:
 
 
 class FloweringPlant(Plant):
-    def __init__(self, name: str, height: int, age: int, color: str) -> None:
+    def __init__(self, name: str, height: int, age: int, color: str, is_blooming: bool) -> None:
         super().__init__(name, height, age)
         self.color = color
+        self.is_blooming = is_blooming
 
 class PrizeFlower(FloweringPlant):
-    def __init__(self, name: str, height: int, age: int, color: str, prize: int) -> None:
+    def __init__(self, name: str, height: int, age: int, color: str, prize_points: int) -> None:
         super().__init__(name, height, age, color)
-        self.prize = prize
+        self.prize_points = prize_points
 
 
 
 class GardenManager():
-    def __init__(self, gardens: int, gardener: str)
-        
-    def create_garden_network()
-        
-    class GardenStats()
+    def __init__(self, gardens: int, gardener: str):
+        self.gardener = gardener
+        self.gardens = []
+
+
+    class GardenStats():
+        def __init__(self, gardens: int, gardener: str, points: int)
+            self.points = points
+
+    def create_garden_network():
+
+
         
 
 
@@ -81,6 +89,10 @@ def ft_plant_types() -> None:
         ("Pine", 15, 120, 17),
     ]
 
+    gardens = []
+
+    for infos in Gardeners
+        new_garden =
     garden = []
 
     for infos in flowers:

@@ -6,7 +6,7 @@
 #  By: rschimme <rschimme@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/01/27 16:08:31 by rschimme        #+#    #+#               #
-#  Updated: 2026/01/28 19:28:47 by rschimme        ###   ########.fr        #
+#  Updated: 2026/02/02 15:22:27 by rschimme        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -16,9 +16,9 @@ class Plant:
         self.height = height
         self.age = age
 
-    def __repr__(self) -> str:
-        return f"{self.name} ({type(self).__name__}): \
-{self.height}cm, {self.age} days"
+    def get_info(self) -> str:
+        return (f"{self.name} ({type(self).__name__}): {self.height}cm,\
+ {self.age} days")
 
 
 class Flower(Plant):
@@ -29,9 +29,8 @@ class Flower(Plant):
     def bloom(self) -> None:
         print(f"{self.name} is blooming !\n")
 
-    def __repr__(self) -> str:
-        return f"{self.name} ({type(self).__name__}): \
-{self.height}cm, {self.age} days, {self.color} color"
+    def get_info(self):
+        return super().get_info() + f", {self.color} color"
 
 
 class Tree(Plant):
@@ -43,9 +42,8 @@ class Tree(Plant):
         print(f"{self.name} provides {self.trunk_diameter * 1.3} \
 square meters of shade\n")
 
-    def __repr__(self) -> str:
-        return f"{self.name} ({type(self).__name__}): \
-{self.height}cm, {self.age} days, {self.trunk_diameter}cm diameter"
+    def get_info(self):
+        return super().get_info() + f", {self.trunk_diameter}cm diameter"
 
 
 class Vegetable(Plant):
@@ -55,9 +53,8 @@ class Vegetable(Plant):
         self.harvest_season = harvest_season
         self.nutritional_value = nutritional_value
 
-    def __repr__(self) -> str:
-        return f"{self.name} ({type(self).__name__}): \
-{self.height}cm, {self.age} days, {self.harvest_season} harvest"
+    def get_info(self):
+        return super().get_info() + f", {self.harvest_season} harvest"
 
 
 def ft_plant_types() -> None:
@@ -91,27 +88,8 @@ def ft_plant_types() -> None:
         new_vegetable = Vegetable(name_x, height_y, age_z, harvest_s, nutri_v)
         garden.append(new_vegetable)
 
-#     for plant in garden:
-#         base_plant = f"{plant.name} ({type(plant).__name__}): \
-# {plant.height}cm, {plant.age} days, "
-
-#         match plant:
-#             case Flower(color=c):
-#                 special_info = (f"{c} color")
-#                 print(base_plant + special_info)
-#                 plant.bloom()
-#             case Tree(trunk_diameter=d):
-#                 special_info = f"{d}cm diameter"
-#                 print((base_plant + special_info))
-#                 plant.produce_shade()
-#             case Vegetable(harvest_season=s, nutritional_value=v):
-#                 special_info = f"{s} harvest"
-#                 print(base_plant + special_info)
-#                 print(f"{plant.name} is rich in {v}\n")
-#             case _:
-#                 print(base_plant)
     for plant in garden:
-        print(plant)
+        print(f"{plant.get_info()}")
         match plant:
             case Flower():
                 plant.bloom()

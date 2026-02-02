@@ -1,18 +1,30 @@
 class Plant:
     def __init__(self, name: str, height: int, age: int) -> None:
+        """Plant type, that can print itself via __repr__
+
+        Args:
+            name (str): Plant name
+            height (int): Plant height, in cm
+            age (int): Plant age, in days
+        """
         self.name = name
         self.height = height
         self.age = age
 
+    def __repr__(self) -> str:
+        return (f"{self.name}: ({self.height}cm, {self.age} days)")
+
 
 def ft_garden_data() -> None:
+    """create plants and print them
+    """
 
-    plant1 = Plant("Corn", 260, 63)
-    plant2 = Plant("Wheat", 26, 32)
-    plant3 = Plant("Cactus", 15, 120)
-    print(plant1.name, ":", plant1.height, "cm,", plant1.age, "days old")
-    print(plant2.name, ":", plant2.height, "cm,", plant2.age, "days old")
-    print(plant3.name, ":", plant3.height, "cm,", plant3.age, "days old")
+    plant1: 'Plant' = Plant("Corn", 260, 63)
+    plant2: 'Plant' = Plant("Wheat", 26, 32)
+    plant3: 'Plant' = Plant("Cactus", 15, 120)
+    print(plant1)
+    print(plant2)
+    print(plant3)
 
 
 if __name__ == "__main__":

@@ -1,14 +1,16 @@
 class Plant:
     def __init__(self, name: str, height: int, age: int) -> None:
+        """Plant type,
+        You can get the data with get_info(), and print it via __repr__
+
+        Args:
+            name (str): Plant age
+            height (int): Plant height, in cm
+            age (int): Plant age, in days
+        """
         self.name = name
         self.height = height
         self.age = age
-
-    def grow(self) -> None:
-        self.height = self.height + 1
-
-    def aging(self) -> None:
-        self.age += 1
 
     def get_info(self) -> tuple[str, int, int]:
         return self.name, self.height, self.age
@@ -31,8 +33,6 @@ def ft_plant_factory() -> None:
         new_plant = Plant(name_x, height_y, age_z)
         garden.append(new_plant)
 
-    # for infos in plants:
-    #     new_plant = Plant(*infos)
     total = 0
     for plant in garden:
         print(plant)
