@@ -6,7 +6,7 @@
 #  By: rschimme <rschimme@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/01/28 17:41:32 by rschimme        #+#    #+#               #
-#  Updated: 2026/02/03 16:15:06 by rschimme        ###   ########.fr        #
+#  Updated: 2026/02/03 16:37:15 by rschimme        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -99,14 +99,14 @@ class GardenManager:
         self.gardens = {}
         self.points = {}
 
-    def create_garden_network(self, gardener_name):
+    def create_garden_network(self, gardener_name: str) -> None:
         if gardener_name not in self.gardens:
             self.gardens[gardener_name] = list()
             print(f"{gardener_name}'s garden created")
         else:
             print(f"{gardener_name}'s garden already exists")
 
-    def add_flowers(self, gardener_name):
+    def add_flowers(self, gardener_name: str) -> None:
         for plant in self.temp_garden:
             self.gardens[gardener_name].append(plant)
             print(f"Added {plant.get_name()} to {gardener_name}'s garden")
@@ -126,7 +126,7 @@ class GardenManager:
                     plant.growth = 0
                 print()
 
-    def print_garden_report(self):
+    def print_garden_report(self) -> None:
         for gardener in self.gardens:
             print(f"=== {gardener}'s Garden Report ===")
             if self.gardens[gardener]:
@@ -148,11 +148,10 @@ class GardenManager:
                 print("No plants in garden\n")
 
     class GardenStats:
-        def __init__(self, manager):
-            self.manager = manager
+        def __init__(self):
             self.points = {}
-        
-        def calculate_points(self):
+
+        def calculate_points(self) -> None:
             for gardener in self.gardens:
                 total = 0
                 if self.gardens[gardener]:
@@ -171,7 +170,7 @@ class GardenManager:
             print("Garden scores -", end='')
             for gardener in self.gardens:
                 if gardener in self.points:
-                    print(f" {gardener}: {self.points[gardener]}", end ='')
+                    print(f" {gardener}: {self.points[gardener]}", end='')
                 else:
                     print(f" {gardener}: 0", end='')
             print()
