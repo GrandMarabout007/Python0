@@ -6,12 +6,13 @@
 #  By: rschimme <rschimme@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/01/28 17:41:32 by rschimme        #+#    #+#               #
-#  Updated: 2026/02/02 20:04:00 by rschimme        ###   ########.fr        #
+#  Updated: 2026/02/03 16:10:26 by rschimme        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
 class Plant:
     plants = []
+
     def __init__(self, name: str, height: int, age: int, gr_spe: int) -> None:
         """_summary_
 
@@ -21,34 +22,59 @@ class Plant:
             age (int): Plant age, in days
             growth_speed (int): Plant growing speed, in cm per day
         """
-        self.name = name
-        self.height = height
-        self.age = age
+        self.set_name(name)
+        self.__height = 0
+        self.set_height(height)
+        self.__age = 0
+        self.set_age(age)
         self.growth_speed = gr_spe
         self.growth = 0
         self.plants.append(self)
 
     def grow(self, value: int) -> None:
-        self.height = self.height + value
+        self.__height = self.__height + value
 
     def aging(self) -> None:
-        self.age += 1
+        self.__age += 1
 
     def get_info(self) -> str:
-        return f"{self.name}: {self.height}cm, {self.age} days old"
+        return f"{self.__name}: {self.__height}cm, {self.__age} days old"
 
-    def week_simulate(self) -> int:
-        for i in range(7):
-            self.grow(self.growth_speed)
-            self.aging()
-        self.growth = (self.growth_speed * 7)
+    def set_height(self, value: int) -> None:
+        if value > 0:
+            self.__height = value
+            print(f"Height updated: {value}cm [OK]")
+        else:
+            print(f"Invalid operation attempted: height {value}cm [REJECTED]")
+            print("Security: Negative height rejected")
+
+    def set_age(self, value: int) -> None:
+        if value > 0:
+            self.__age = value
+            print(f"Age updated: {value} days [OK]")
+        else:
+            print(f"Invalid operation attempted: age {value} days [REJECTED]")
+            print("Security: Negative age rejected")
+
+    def set_name(self, name: str) -> None:
+        self.__name = name
+
+    def get_height(self) -> int:
+        return self.__height
+
+    def get_age(self) -> int:
+        return self.__age
+
+    def get_name(self) -> str:
+        return self.__name
+
 
 class FloweringPlant(Plant):
-    def __init__(self, name: str, height: int, growth_speed: int, age: int, color: str, is_blooming: bool) -> None:
+    def __init__(self, name: str, height: int, age: int, growth_speed: int, color: str, is_blooming: bool) -> None:
         super().__init__(name, height, age, growth_speed)
         self.color = color
         self.is_blooming = is_blooming
-    
+
     def get_info(self) -> str:
         if self.is_blooming is True:
             return super().get_info() + f", {self.color} flowers (blooming)"
@@ -62,17 +88,18 @@ class PrizeFlower(FloweringPlant):
         self.prize_points = prize_points
 
     def get_info(self) -> str:
-        return super().get_info() + f", prize points : {self.prize_points}"
+        return super().get_info() + f", Prize points : {self.prize_points}"
 
 
 class GardenManager:
-    main_garden = []
+    temp_garden = []
 
     def __init__(self, name):
         self.name = name
         self.gardens = {}
+        self.points = {}
 
-    def add_garden(self, gardener_name):
+    def create_garden_network(self, gardener_name):
         if gardener_name not in self.gardens:
             self.gardens[gardener_name] = list()
             print(f"{gardener_name}'s garden created")
@@ -80,15 +107,78 @@ class GardenManager:
             print(f"{gardener_name}'s garden already exists")
 
     def add_flowers(self, gardener_name):
-        for flower in self.main_garden:
-            self.gardens[gardener_name].append(flower)
-    # def add_garden(self, name)
-    #     self.plants = []
-    #     garden.append[self]
+        for plant in self.temp_garden:
+            self.gardens[gardener_name].append(plant)
+            print(f"Added {plant.get_name()} to {gardener_name}'s garden")
+        self.temp_garden.clear()
+        print()
+    
+    def week_simulate(self) -> int:
+        for gardener in self.gardens:
+            if self.gardens[gardener]:
+                print(f"{gardener} is helping all plants grow..")
+                for plant in self.gardens[gardener]:
+                    for i in range(7):
+                        plant.grow(plant.growth_speed)
+                        plant.aging()
+                    plant.growth = (plant.growth_speed * 7)
+                    print(f"{plant.get_name()} grew {plant.growth}cm this week")
+                    plant.growth = 0
+                print()
+
+    def print_garden_report(self):
+        for gardener in self.gardens:
+            print(f"=== {gardener}'s Garden Report ===")
+            if self.gardens[gardener]:
+                print("Plants in garden:")
+                regular = 0
+                flowering = 0
+                prize = 0
+                for plant in self.gardens[gardener]:
+                    if isinstance(plant, PrizeFlower):
+                        prize += 1
+                    elif isinstance(plant, FloweringPlant):
+                        flowering += 1
+                    elif isinstance(plant, Plant):
+                        regular += 1
+                    print(f"{plant.get_info()}")
+                print(f"Plants added: {prize + flowering + regular}")
+                print(f"Plant types: {regular} regular, {flowering} flowering, {prize} prize flowers\n")
+            else:
+                print("No plants in garden\n")
+
+    class GardenStats:
+        def __init__(self, manager):
+            self.manager = manager
+            self.points = {}
+        
+        def calculate_points(self):
+            for gardener in self.gardens:
+                total = 0
+                if self.gardens[gardener]:
+                    for plant in self.gardens[gardener]:
+                        if isinstance(plant, PrizeFlower):
+                            total += plant.prize_points
+                        if isinstance(plant, FloweringPlant):
+                            total += 9
+                            if plant.is_blooming is True:
+                                total += 40
+                        if isinstance(plant, Plant):
+                            total += 1
+                    self.points[gardener] = total
+
+        def print_scores(self) -> None:
+            print("Garden scores -", end='')
+            for gardener in self.gardens:
+                if gardener in self.points:
+                    print(f" {gardener}: {self.points[gardener]}", end ='')
+                else:
+                    print(f" {gardener}: 0", end='')
+            print()
 
 
 def ft_garden_analytics():
-    
+
     Manager = GardenManager("Manager")
     gardeners = [
         ("Alice"),
@@ -96,38 +186,48 @@ def ft_garden_analytics():
         ("Bob"),
         ("Alice"),
     ]
-    flowers = [
+    plants = [
         ("Rose", 25, 30, 1, "red", True),
         ("Sunflower", 80, 45, 2, "yellow", False),
-        ("Nice Rose", 25, 30, 1, "red", True, 500),
-        ("Shining Sunflower", 80, 45, 2, "yellow", False, 6200),
+        ("Nice Rose", 25, 30, 1, "red", True, 150),
+        ("Shining Sunflower", 80, 45, 2, "yellow", False, 700),
     ]
     for name in gardeners:
-        Manager.add_garden(name)
+        Manager.create_garden_network(name)
 
-    # for infos in flowers:
-    #     new_flower = FloweringPlant(*infos)
-    #     Manager.gardens["Alice"].append(new_flower)
-    #     print(f"Added {new_flower.name} to Alice's garden")
-
-    # for infos in prize_flowers:
-    #     new_flower = PrizeFlower(*infos)
-    #     Manager.garden.append(new_flower)
-    #     print(f"Added {new_flower.name} to x garden")
-    for infos in flowers:
-        if len(infos) == 6:
+    for infos in plants:
+        if len(infos) == 4:
+            flower = Plant(*infos)
+        elif len(infos) == 6:
             flower = FloweringPlant(*infos)
-            Manager.main_garden.append(flower)
         elif len(infos) == 7:
             flower = PrizeFlower(*infos)
-            Manager.main_garden.append(flower)
+        Manager.temp_garden.append(flower)
     
     Manager.add_flowers("Alice")
-    for plant in Manager.gardens["Alice"]:
-        print(plant.get_info())
-
+    plants_2 = [
+        ("Oak Tree", 25, 30, 5),
+        ("Blue Edelweiss", 8, 120, 1, "blue", True, 8000),
+        ("Tomato flower", 60, 2, 3, "white", True),
+    ]
+    for infos in plants_2:
+        if len(infos) == 4:
+            plant = Plant(*infos)
+        elif len(infos) == 6:
+            plant = FloweringPlant(*infos)
+        elif len(infos) == 7:
+            plant = PrizeFlower(*infos)
+        Manager.temp_garden.append(plant)
+    
+    Manager.add_flowers("Bob")
+    Manager.print_garden_report()
+    Manager.week_simulate()
+    # for plant in Manager.gardens["Alice"]:
+    #     print(plant.get_info())
+    Manager.GardenStats.calculate_points(Manager)
+    Manager.GardenStats.print_scores(Manager)
 
 
 if __name__ == "__main__":
-    print("=== Garden Plant Types ===\n")
+    print("=== Garden Management System ===\n")
     ft_garden_analytics()
