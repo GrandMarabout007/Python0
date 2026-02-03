@@ -6,7 +6,7 @@
 #  By: rschimme <rschimme@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/01/27 15:48:40 by rschimme        #+#    #+#               #
-#  Updated: 2026/02/02 17:16:45 by rschimme        ###   ########.fr        #
+#  Updated: 2026/02/03 17:11:51 by rschimme        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -42,7 +42,7 @@ class Plant:
         self.growth = (self.growth_speed * 7)
 
 
-def ft_plant_growth():
+def ft_plant_growth() -> None:
     plant1: 'Plant' = Plant("Rose", 25, 30, 1)
     plant2: 'Plant' = Plant("Corn", 260, 63, 6)
 

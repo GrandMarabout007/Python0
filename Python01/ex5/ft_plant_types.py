@@ -6,7 +6,7 @@
 #  By: rschimme <rschimme@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/01/27 16:08:31 by rschimme        #+#    #+#               #
-#  Updated: 2026/02/02 15:22:27 by rschimme        ###   ########.fr        #
+#  Updated: 2026/02/03 17:15:25 by rschimme        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -77,15 +77,15 @@ def ft_plant_types() -> None:
     garden = []
 
     for name_x, height_y, age_z, color_c in flowers:
-        new_flower = Flower(name_x, height_y, age_z, color_c)
+        new_flower: 'Flower' = Flower(name_x, height_y, age_z, color_c)
         garden.append(new_flower)
 
     for name_x, height_y, age_z, trunk_t in trees:
-        new_tree = Tree(name_x, height_y, age_z, trunk_t)
+        new_tree: 'Tree' = Tree(name_x, height_y, age_z, trunk_t)
         garden.append(new_tree)
 
     for name_x, height_y, age_z, harvest_s, nutri_v in vegetables:
-        new_vegetable = Vegetable(name_x, height_y, age_z, harvest_s, nutri_v)
+        new_vegetable: 'Vegetable' = Vegetable(name_x, height_y, age_z, harvest_s, nutri_v)
         garden.append(new_vegetable)
 
     for plant in garden:

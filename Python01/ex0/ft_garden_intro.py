@@ -1,4 +1,4 @@
-def ft_garden_intro():
+def ft_garden_intro() -> None:
     """Print all plant's datas.
 
     Variables:

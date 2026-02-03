@@ -47,7 +47,7 @@ class SecurePlant:
 {self.__age} days)")
 
 
-def ft_garden_security():
+def ft_garden_security() -> None:
 
     plant1: 'SecurePlant' = SecurePlant("Rose", -25, 20)
     print(f"Plant created: {plant1.get_name()}")
