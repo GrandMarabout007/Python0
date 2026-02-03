@@ -6,7 +6,7 @@
 #  By: rschimme <rschimme@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/01/27 16:08:31 by rschimme        #+#    #+#               #
-#  Updated: 2026/02/03 17:15:25 by rschimme        ###   ########.fr        #
+#  Updated: 2026/02/03 19:26:50 by rschimme        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -84,9 +84,9 @@ def ft_plant_types() -> None:
         new_tree: 'Tree' = Tree(name_x, height_y, age_z, trunk_t)
         garden.append(new_tree)
 
-    for name_x, height_y, age_z, harvest_s, nutri_v in vegetables:
-        new_vegetable: 'Vegetable' = Vegetable(name_x, height_y, age_z, harvest_s, nutri_v)
-        garden.append(new_vegetable)
+    for name_x, height_y, age_z, har_s, nutri_v in vegetables:
+        new_v: 'Vegetable' = Vegetable(name_x, height_y, age_z, har_s, nutri_v)
+        garden.append(new_v)
 
     for plant in garden:
         print(f"{plant.get_info()}")

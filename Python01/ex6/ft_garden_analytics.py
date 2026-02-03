@@ -6,7 +6,7 @@
 #  By: rschimme <rschimme@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/01/28 17:41:32 by rschimme        #+#    #+#               #
-#  Updated: 2026/02/03 18:29:34 by rschimme        ###   ########.fr        #
+#  Updated: 2026/02/03 19:27:10 by rschimme        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -112,7 +112,7 @@ class GardenManager:
             print(f"Added {plant.get_name()} to {gardener_name}'s garden")
         self.temp_garden = []
         print()
-    
+
     def week_simulate(self) -> int:
         for gardener in self.gardens:
             if self.gardens[gardener]:
@@ -148,7 +148,7 @@ this week")
 flowering, {prize} prize flowers\n")
             else:
                 print("No plants in garden\n")
-    
+
     def count_gardens(self) -> None:
         total = 0
         for gardeners in self.gardens:
@@ -203,12 +203,12 @@ def ft_garden_analytics():
 
     for infos in plants:
         if len(infos) == 4:
-            flower = Plant(*infos)
+            newplant: 'Plant' = Plant(*infos)
         elif len(infos) == 6:
-            flower = FloweringPlant(*infos)
+            newplant: 'FloweringPlant' = FloweringPlant(*infos)
         elif len(infos) == 7:
-            flower = PrizeFlower(*infos)
-        Manager.temp_garden.append(flower)
+            newplant: 'PrizeFlower' = PrizeFlower(*infos)
+        Manager.temp_garden.append(newplant)
 
     Manager.add_flowers("Alice")
     plants_2 = [
@@ -218,12 +218,12 @@ def ft_garden_analytics():
     ]
     for infos in plants_2:
         if len(infos) == 4:
-            plant = Plant(*infos)
+            newplant: 'Plant' = Plant(*infos)
         elif len(infos) == 6:
-            plant = FloweringPlant(*infos)
+            newplant: 'FloweringPlant' = FloweringPlant(*infos)
         elif len(infos) == 7:
-            plant = PrizeFlower(*infos)
-        Manager.temp_garden.append(plant)
+            newplant: 'PrizeFlower' = PrizeFlower(*infos)
+        Manager.temp_garden.append(newplant)
 
     Manager.add_flowers("Bob")
     Manager.print_garden_report()
