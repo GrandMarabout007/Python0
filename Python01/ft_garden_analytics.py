@@ -6,7 +6,7 @@
 #  By: rschimme <rschimme@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/01/28 17:41:32 by rschimme        #+#    #+#               #
-#  Updated: 2026/02/03 16:10:26 by rschimme        ###   ########.fr        #
+#  Updated: 2026/02/03 16:15:06 by rschimme        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -160,11 +160,11 @@ class GardenManager:
                         if isinstance(plant, PrizeFlower):
                             total += plant.prize_points
                         if isinstance(plant, FloweringPlant):
-                            total += 9
+                            total += 50
                             if plant.is_blooming is True:
-                                total += 40
+                                total += 200
                         if isinstance(plant, Plant):
-                            total += 1
+                            total += plant.get_height()
                     self.points[gardener] = total
 
         def print_scores(self) -> None:
@@ -189,8 +189,8 @@ def ft_garden_analytics():
     plants = [
         ("Rose", 25, 30, 1, "red", True),
         ("Sunflower", 80, 45, 2, "yellow", False),
-        ("Nice Rose", 25, 30, 1, "red", True, 150),
-        ("Shining Sunflower", 80, 45, 2, "yellow", False, 700),
+        ("Nice Rose", 25, 30, 1, "red", True, 300),
+        ("Shining Sunflower", 80, 45, 2, "yellow", False, 1200),
     ]
     for name in gardeners:
         Manager.create_garden_network(name)
@@ -203,11 +203,11 @@ def ft_garden_analytics():
         elif len(infos) == 7:
             flower = PrizeFlower(*infos)
         Manager.temp_garden.append(flower)
-    
+
     Manager.add_flowers("Alice")
     plants_2 = [
-        ("Oak Tree", 25, 30, 5),
-        ("Blue Edelweiss", 8, 120, 1, "blue", True, 8000),
+        ("Oak Tree", 250, 360, 4),
+        ("Blue Edelweiss", 8, 120, 1, "blue", True, 11000),
         ("Tomato flower", 60, 2, 3, "white", True),
     ]
     for infos in plants_2:
@@ -218,12 +218,10 @@ def ft_garden_analytics():
         elif len(infos) == 7:
             plant = PrizeFlower(*infos)
         Manager.temp_garden.append(plant)
-    
+
     Manager.add_flowers("Bob")
     Manager.print_garden_report()
     Manager.week_simulate()
-    # for plant in Manager.gardens["Alice"]:
-    #     print(plant.get_info())
     Manager.GardenStats.calculate_points(Manager)
     Manager.GardenStats.print_scores(Manager)
 
