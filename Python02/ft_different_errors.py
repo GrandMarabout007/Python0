@@ -6,7 +6,7 @@
 #  By: rschimme <rschimme@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/02/04 14:16:22 by rschimme        #+#    #+#               #
-#  Updated: 2026/02/05 17:37:25 by rschimme        ###   ########.fr        #
+#  Updated: 2026/02/05 20:09:15 by rschimme        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -54,7 +54,7 @@ def garden_operations(keyword: str, arg: str, smth: str) -> None:
     elif keyword == "file":
         open(arg)
     elif keyword == "key":
-        print ({smth["pat"]})
+        print({smth["pat"]})
 
 
 if __name__ == "__main__":
