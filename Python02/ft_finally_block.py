@@ -6,7 +6,7 @@
 #  By: rschimme <rschimme@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/02/05 15:13:37 by rschimme        #+#    #+#               #
-#  Updated: 2026/02/05 16:08:26 by rschimme        ###   ########.fr        #
+#  Updated: 2026/02/05 17:36:19 by rschimme        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -25,7 +25,7 @@ plant_list_clean = [
 ]
 
 
-def water_plants(plant_list):
+def water_plants(plant_list: list) -> None:
     print("Opening the watering system")
     try:
         for plant in plant_list:
@@ -40,7 +40,7 @@ def water_plants(plant_list):
         print("Closing watering system (cleanup)")
 
 
-def test_watering_system():
+def test_watering_system() -> None:
 
     try:
         print("Testing normal watering...")

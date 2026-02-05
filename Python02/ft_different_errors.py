@@ -6,11 +6,11 @@
 #  By: rschimme <rschimme@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/02/04 14:16:22 by rschimme        #+#    #+#               #
-#  Updated: 2026/02/05 16:11:21 by rschimme        ###   ########.fr        #
+#  Updated: 2026/02/05 17:37:25 by rschimme        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
-def test_error_types():
+def test_error_types() -> None:
 
     file_to_send = "missing.txt"
     something = "plant"
@@ -44,7 +44,7 @@ def test_error_types():
     print("All error types tested successfully!")
 
 
-def garden_operations(keyword: str, arg: str, smth: str):
+def garden_operations(keyword: str, arg: str, smth: str) -> None:
 
     smth = {}
     if keyword == "value":
@@ -54,7 +54,7 @@ def garden_operations(keyword: str, arg: str, smth: str):
     elif keyword == "file":
         open(arg)
     elif keyword == "key":
-        return smth["pat"]
+        print ({smth["pat"]})
 
 
 if __name__ == "__main__":
