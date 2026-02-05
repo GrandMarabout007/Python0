@@ -6,7 +6,7 @@
 #  By: rschimme <rschimme@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/02/04 14:16:22 by rschimme        #+#    #+#               #
-#  Updated: 2026/02/04 19:14:23 by rschimme        ###   ########.fr        #
+#  Updated: 2026/02/05 16:11:21 by rschimme        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -21,7 +21,7 @@ def test_error_types():
     except ValueError:
         print("Caught ValueError: invalid literal for int()\n")
     print("Testing ZeroDivisionError...")
-    try: 
+    try:
         garden_operations("zero", file_to_send, something)
     except ZeroDivisionError:
         print("Caught ZeroDivisionError: division by zero\n")
