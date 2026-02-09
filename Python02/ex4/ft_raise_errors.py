@@ -1,6 +1,23 @@
 
-def check_plant_health(plant_name, water_level, sunlight_hours) -> str:
+def check_plant_health(plant_name: str, water_level: int,
+                       sunlight_hours: int) -> str:
+    """Checking the water and sunlight hours value. Raises a ValueError
+        if the values are not correct
+        Plant water level must be between 1 and 10
+        Plant sunlight hours must be between 2 and 12
 
+    Args:
+        plant_name (str): plant name
+        water_level (int): water level, must be between 1 and 10
+        sunlight_hours (int): sunlight hours, must be between 2 and 12
+
+    Raises:
+        ValueError: Raised if the water_level or the sunlight_hours
+        are not in their range
+
+    Returns:
+        str: Succes message if everything is okay
+    """
     if plant_name is None:
         print("Error: Plant name cannot be empty !")
         raise ValueError
@@ -20,7 +37,9 @@ high (max 12)")
     return (f"Plant {plant_name} is healthy!")
 
 
-def test_plant_checks():
+def test_plant_checks() -> None:
+    """Tests all cases of error
+    """
     print("Testing good values...")
     print(check_plant_health("Rose", 8, 8), "\n")
     print("Testing empty plant name...")

@@ -6,12 +6,12 @@
 #  By: rschimme <rschimme@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/02/04 19:17:45 by rschimme        #+#    #+#               #
-#  Updated: 2026/02/05 15:12:42 by rschimme        ###   ########.fr        #
+#  Updated: 2026/02/09 16:14:04 by rschimme        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
 class GardenError(Exception):
-    def __init__(self, message: str):
+    def __init__(self, message: str) -> None:
         self.message = message
 
     def return_message(self) -> str:
@@ -19,26 +19,35 @@ class GardenError(Exception):
 
 
 class PlantError(GardenError):
-    def __init__(self, message):
+    def __init__(self, message: str) -> None:
         super().__init__(message)
 
-    def return_message(self):
+    def return_message(self) -> str:
         return super().return_message()
 
 
 class WaterError(GardenError):
-    def __init__(self, message):
+    def __init__(self, message: str) -> None:
         super().__init__(message)
 
-    def return_message(self):
+    def return_message(self) -> None:
         return super().return_message()
 
 
-def custom_error_1by1():
+def custom_error_1by1() -> None:
+    """Creates Custom errors and raises them
 
-    error_garden = GardenError("The garden is full of bugs")
-    error_plant = PlantError("The tomato plant is wilting !")
-    error_water = WaterError("The water is dirty")
+    Raises:
+        error_garden: A specific error for the garden in general
+        error_plant: The specific error for the plants. This error is
+        garden related
+        error_water: The specific error for the water. This error is
+        garden related
+    """
+
+    error_garden: 'GardenError' = GardenError("The garden is full of bugs")
+    error_plant: 'PlantError' = PlantError("The tomato plant is wilting !")
+    error_water: 'WaterError' = WaterError("The water is dirty")
 
     print("Testing GardenError...")
     try:
@@ -57,8 +66,10 @@ def custom_error_1by1():
         print(f"{error_water.return_message()}\n")
 
 
-def custom_error_multiple():
-    errors = [
+def custom_error_multiple() -> None:
+    """Raises multiple errors to show that some errors are related to others
+    """
+    errors: list = [
         GardenError("The garden is full of bugs"),
         WaterError("The water tank is almost empty"),
         WaterError("The water is dirty"),

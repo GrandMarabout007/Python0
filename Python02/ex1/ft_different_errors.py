@@ -6,11 +6,14 @@
 #  By: rschimme <rschimme@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/02/04 14:16:22 by rschimme        #+#    #+#               #
-#  Updated: 2026/02/05 20:09:15 by rschimme        ###   ########.fr        #
+#  Updated: 2026/02/09 16:02:11 by rschimme        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
 def test_error_types() -> None:
+    """Triggers the different errors via specific keywords
+
+    """
 
     file_to_send = "missing.txt"
     something = "plant"
@@ -45,6 +48,12 @@ def test_error_types() -> None:
 
 
 def garden_operations(keyword: str, arg: str, smth: str) -> None:
+    """ Raises errors based of the keyword used as input
+    Args:
+        keyword (str): the keyword used to chose an error to raise
+        arg (str): the file to open for the file error
+        smth (str): Something that is not a dictionnary
+    """
 
     smth = {}
     if keyword == "value":

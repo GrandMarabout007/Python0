@@ -6,18 +6,18 @@
 #  By: rschimme <rschimme@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/02/05 15:13:37 by rschimme        #+#    #+#               #
-#  Updated: 2026/02/05 17:36:19 by rschimme        ###   ########.fr        #
+#  Updated: 2026/02/09 16:25:44 by rschimme        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
-plant_list_error = [
+plant_list_error: list = [
       "tomato",
       "patrick",
       None,
       "carrot",
 ]
 
-plant_list_clean = [
+plant_list_clean: list = [
       "tomato",
       "patrick",
       "lettuce",
@@ -26,8 +26,17 @@ plant_list_clean = [
 
 
 def water_plants(plant_list: list) -> None:
-    print("Opening the watering system")
+    """Water the plants. if the plant name is not valid,
+        raises ValueError, and close the watering system
+
+    Args:
+        plant_list (list): list of the plants to water
+
+    Raises:
+        ValueError: raised if the plant name is not valid
+    """
     try:
+        print("Opening the watering system")
         for plant in plant_list:
             if not isinstance(plant, str):
                 raise ValueError()
@@ -41,6 +50,9 @@ def water_plants(plant_list: list) -> None:
 
 
 def test_watering_system() -> None:
+    """demonstrates normal watering with a good plant list,
+    watering with a bad plant list, and that cleanup always happens
+    """
 
     try:
         print("Testing normal watering...")
