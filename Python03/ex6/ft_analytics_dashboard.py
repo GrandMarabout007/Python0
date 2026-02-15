@@ -71,7 +71,7 @@ def set_example():
                    'speed_demon', 'perfectionist'])
     unique_achievements = {achiev for player_achiev in (alice, bob, charlie)
                            for achiev in player_achiev}
-    print(unique_achievements)
+    print(f"Unique achievements: {unique_achievements}")
 
 
 if __name__ == "__main__":
