@@ -53,6 +53,25 @@ def dict_example():
 
 
 def set_example():
+    print("=== Set comprehension Examples ===")
+    players = [
+        ('alice', 1800),
+        ('charlie', 2500),
+        ('bob', 3650),
+        ('alice', 500),
+        ('alice', 1800),
+        ('diana', 600),
+        ('charlie', 20),
+        ]
+    players_set = {name for name, score in players}
+    print(f"Unique players: {players_set}")
+    alice = set(['first_kill', 'level_10', 'treasure_hunter', 'speed_demon'])
+    bob = set(['first_kill', 'level_10', 'boss_slayer', 'collector'])
+    charlie = set(['treasure_hunter', 'level_10', 'boss_slayer',
+                   'speed_demon', 'perfectionist'])
+    unique_achievements = {achiev for player_achiev in (alice, bob, charlie)
+                           for achiev in player_achiev}
+    print(unique_achievements)
 
 
 if __name__ == "__main__":
@@ -60,3 +79,5 @@ if __name__ == "__main__":
     list_example()
     print()
     dict_example()
+    print()
+    set_example()
