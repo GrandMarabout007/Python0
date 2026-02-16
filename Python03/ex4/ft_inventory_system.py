@@ -6,7 +6,7 @@
 #  By: rschimme <rschimme@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/02/11 14:18:43 by rschimme        #+#    #+#               #
-#  Updated: 2026/02/12 16:05:30 by rschimme        ###   ########.fr        #
+#  Updated: 2026/02/16 18:01:09 by rschimme        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -16,7 +16,7 @@ def inventory_master() -> None:
     """
 
     import sys
-    inventory: 'dict' = {}
+    inventory: dict = {}
     try:
         create_inventory(inventory)
     except ValueError:
@@ -27,7 +27,7 @@ def inventory_master() -> None:
     print(f"Unique item types: {len(inventory)}")
     current_inventory(inventory)
     inventory_stats(inventory)
-    abundance: 'dict' = item_categories(inventory)
+    abundance: dict[str, dict] = item_categories(inventory)
     management_suggestions(abundance)
     dict_demo(inventory)
     sample_lookup(inventory, "sword")
@@ -41,7 +41,7 @@ def current_inventory(inventory: dict) -> None:
         inventory (dict): inventory
     """
     print("\n=== Current Inventory ===")
-    total_items: 'int' = sum(inventory.values())
+    total_items: int = sum(inventory.values())
     for item, value in inventory.items():
         print(f"{item}: {value} units ({((value/total_items) * 100):.1f}%)")
 
@@ -56,7 +56,7 @@ def item_categories(inventory: dict) -> dict:
         dict: the new dict, containing the rarity of items
     """
     print("\n=== Item Categories ===")
-    abundance: 'dict' = {
+    abundance: dict[str, dict] = {
         "Common": {},
         "Moderate": {},
         "Scarce": {},
@@ -75,7 +75,7 @@ def item_categories(inventory: dict) -> dict:
     return (abundance)
 
 
-def management_suggestions(abundance: dict):
+def management_suggestions(abundance: dict[str, dict]) -> None:
     """print the items that needs to be restocked or sold, depending
     on their number in the inventory
 
@@ -97,7 +97,7 @@ def management_suggestions(abundance: dict):
         print(tosell)
 
 
-def dict_demo(inventory: dict):
+def dict_demo(inventory: dict) -> None:
     """Shows the items and their number in the inventory
 
     Args:
@@ -140,7 +140,7 @@ def create_inventory(inventory: dict) -> None:
     return (inventory)
 
 
-def inventory_stats(inventory: dict):
+def inventory_stats(inventory: dict) -> None:
     """shows the most and least abundant iten in the inventory
 
     Args:
