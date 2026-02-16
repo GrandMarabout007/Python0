@@ -6,11 +6,11 @@
 #  By: rschimme <rschimme@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/02/16 18:54:27 by rschimme        #+#    #+#               #
-#  Updated: 2026/02/16 19:38:24 by rschimme        ###   ########.fr        #
+#  Updated: 2026/02/16 20:13:45 by rschimme        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
-def read_text():
+def read_text() -> None:
     print("Initializing new storage unit: new_discovery.txt")
     try:
         file1 = open("new_discovery.txt", 'w')
@@ -33,7 +33,7 @@ def read_text():
         file1.close()
         print("error")
         return
-    data = file1.read()
+    data: str = file1.read()
     print(data)
     file1.close()
 

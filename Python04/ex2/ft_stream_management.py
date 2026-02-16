@@ -6,14 +6,14 @@
 #  By: rschimme <rschimme@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/02/16 19:08:38 by rschimme        #+#    #+#               #
-#  Updated: 2026/02/16 19:23:24 by rschimme        ###   ########.fr        #
+#  Updated: 2026/02/16 20:13:29 by rschimme        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
-def stream_management():
+def stream_management() -> None:
     import sys
-    archivist_ID = input("Input Stream active. Enter archivist ID: ")
-    status_report = input("Input Stream active. Enter status report: ")
+    archivist_ID: str = input("Input Stream active. Enter archivist ID: ")
+    status_report: str = input("Input Stream active. Enter status report: ")
 
     print(f"[STANDARD] Archive status from {archivist_ID}: {status_report}",
           file=sys.stdout)
