@@ -6,7 +6,7 @@
 #  By: rschimme <rschimme@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/02/17 13:35:08 by rschimme        #+#    #+#               #
-#  Updated: 2026/02/17 17:18:47 by rschimme        ###   ########.fr        #
+#  Updated: 2026/02/17 17:27:33 by rschimme        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -116,7 +116,6 @@ class LogProcessor(DataProcessor):
         return "Done"
 
 
-
 def stream_processor():
     nprocessor = NumericProcessor()
     nprocessor.process([1, 5, 6, 8])
@@ -127,6 +126,16 @@ def stream_processor():
     lprocessor = LogProcessor()
     lprocessor.process("ERROR: Connection timeout")
     # gprocessor = DataProcessor()
+    print("\n=== Polymorphic Processing Demo ===")
+    data_to_process = [
+        (lprocessor, "INFO: System ready"),
+        (tprocessor, "Hello guys"),
+        (nprocessor, [1, 5, 8, 9]),
+    ]
+    for processor, data in data_to_process:
+        processor.process(data)
+
+
 
 
 if __name__ == "__main__":
