@@ -6,7 +6,7 @@
 #  By: rschimme <rschimme@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/02/12 16:05:57 by rschimme        #+#    #+#               #
-#  Updated: 2026/02/14 17:15:12 by rschimme        ###   ########.fr        #
+#  Updated: 2026/02/17 14:23:21 by rschimme        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -14,6 +14,14 @@ from typing import Generator
 
 
 def fibonacci(number: int) -> Generator[int, None, None]:
+    """Generator version of fibonnaci
+
+    Args:
+        number (int): number of iterations
+
+    Yields:
+        Generator[int, None, None]: the result of the fibonnaci
+    """
     a: 'int' = 0
     b: 'int' = 1
     for i in range(number):
@@ -24,6 +32,14 @@ def fibonacci(number: int) -> Generator[int, None, None]:
 
 
 def fibonnaci_stored(number: int) -> dict[int]:
+    """Stored version of the fibonnaci
+
+    Args:
+        number (int): number of iterations
+
+    Returns:
+        dict[int]: dict containing all of the results for each iteration
+    """
     a: 'int' = 0
     b: 'int' = 1
     result: 'dict' = []
@@ -36,6 +52,15 @@ def fibonnaci_stored(number: int) -> dict[int]:
 
 
 def create_events(number: int) -> Generator[dict, None, None]:
+    """This fuction create fake random events with i as a base
+
+    Args:
+        number (int): number of events to create
+
+    Yields:
+        Generator[dict, None, None]: return a dict containing the data of
+        the event
+    """
     players: 'dict[str]' = ['alice', 'bob', 'charlie']
     actions: 'dict[str]' = ['killed monster', 'found treasure', 'leveled up',
                             "ate a carrot", "took a nap"]

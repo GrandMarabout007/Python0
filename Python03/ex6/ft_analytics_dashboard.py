@@ -6,11 +6,15 @@
 #  By: rschimme <rschimme@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/02/14 17:16:48 by rschimme        #+#    #+#               #
-#  Updated: 2026/02/16 18:11:20 by rschimme        ###   ########.fr        #
+#  Updated: 2026/02/17 14:20:44 by rschimme        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
 def comprehension_examples() -> None:
+    """This function is made of 4 different parts, which shows
+    comprehension with list, dict and set. Finally, a 4th part
+    uses the different data to show stats
+    """
     print("=== List comprehension Examples ===")
     players1: list[tuple[str, int, bool]] = [
         ('alice', 1800, True),
