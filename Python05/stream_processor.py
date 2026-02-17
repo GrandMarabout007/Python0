@@ -6,7 +6,7 @@
 #  By: rschimme <rschimme@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/02/17 13:35:08 by rschimme        #+#    #+#               #
-#  Updated: 2026/02/17 17:27:33 by rschimme        ###   ########.fr        #
+#  Updated: 2026/02/17 17:45:20 by rschimme        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -16,11 +16,11 @@ from abc import ABC, abstractmethod
 
 class DataProcessor(ABC):
     @abstractmethod
-    def process(self, data: any) -> str:
+    def process(self, data: Any) -> str:
         pass
 
     @abstractmethod
-    def validate(self, data: any):
+    def validate(self, data: Any) -> bool:
         pass
 
     def format_output(self, result: str) -> str:
@@ -29,7 +29,7 @@ class DataProcessor(ABC):
 
 
 class NumericProcessor(DataProcessor):
-    def process(self, data: any) -> str:
+    def process(self, data: Any) -> str:
         print("Initializing Numeric Processor...")
         print(f"Processing data: {data}")
         if self.validate(data) is True:
@@ -41,18 +41,18 @@ class NumericProcessor(DataProcessor):
             self.format_output("[ALERT], ERROR level detected: not numeric data as dict[int]")
         return "Done"
 
-    def validate(self, data: any) -> bool:
+    def validate(self, data: Any) -> bool:
         try:
             for number in data:
                 int(number)
         except (ValueError, TypeError):
-            print("Validation: Numeric data verified")
+            print("Validation: Validation failed")
             return False
         print("Validation: Numeric data verified")
         return True
 
     def format_output(self, result: str) -> str:
-        print(f"Output: {result}")
+        super().format_output(result)
         return "Done"
 
 
@@ -68,17 +68,17 @@ class TextProcessor(DataProcessor):
             self.format_output("[ALERT], ERROR level detected: not Text data as str")
         return "Done"
 
-    def validate(self, data: any) -> bool:
+    def validate(self, data: Any) -> bool:
         try:
             data + ""
         except TypeError:
-            print("Validation: Text data verified")
+            print("Validation: Validation failed")
             return False
         print("Validation: Text data verified")
         return True
 
     def format_output(self, result: str) -> str:
-        print(f"Output: {result}")
+        super().format_output(result)
         return "Done"
 
 
@@ -96,7 +96,7 @@ class LogProcessor(DataProcessor):
             self.format_output("[ALERT], ERROR level detected: not Log data as <keyword: text> ")
         return "Done"
 
-    def validate(self, data: any) -> bool:
+    def validate(self, data: Any) -> bool:
         try:
             data + ""
             if data.split()[0] == "ERROR:":
@@ -106,13 +106,13 @@ class LogProcessor(DataProcessor):
                 print("Validation: Log data verified")
                 return True
         except TypeError:
-            print("Validation: Log data verified")
+            print("Validation: Validation failed")
             return False
-        print("Validation: Log data verified")
+        print("Validation: Validation failed")
         return False
 
     def format_output(self, result: str) -> str:
-        print(f"Output: {result}")
+        super().format_output(result)
         return "Done"
 
 
@@ -125,7 +125,6 @@ def stream_processor():
     print()
     lprocessor = LogProcessor()
     lprocessor.process("ERROR: Connection timeout")
-    # gprocessor = DataProcessor()
     print("\n=== Polymorphic Processing Demo ===")
     data_to_process = [
         (lprocessor, "INFO: System ready"),
@@ -134,8 +133,7 @@ def stream_processor():
     ]
     for processor, data in data_to_process:
         processor.process(data)
-
-
+        print()
 
 
 if __name__ == "__main__":
