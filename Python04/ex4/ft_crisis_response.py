@@ -6,11 +6,11 @@
 #  By: rschimme <rschimme@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/02/16 19:42:29 by rschimme        #+#    #+#               #
-#  Updated: 2026/02/16 20:13:08 by rschimme        ###   ########.fr        #
+#  Updated: 2026/02/18 15:54:43 by rschimme        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
-def crisis_response(file1) -> None:
+def crisis_response(file1: str) -> None:
     try:
         with open(file1, 'r') as file001:
             data1: str = file001.read()

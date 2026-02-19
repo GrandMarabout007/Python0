@@ -6,11 +6,11 @@
 #  By: rschimme <rschimme@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/02/16 19:24:16 by rschimme        #+#    #+#               #
-#  Updated: 2026/02/16 19:41:52 by rschimme        ###   ########.fr        #
+#  Updated: 2026/02/18 15:54:11 by rschimme        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
-def vault_security():
+def vault_security() -> None:
     print("Initiating secure vault access...")
     print("Vault connection established with failsafe protocols\n")
     print("SECURE EXTRACTION:")
