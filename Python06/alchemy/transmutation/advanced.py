@@ -8,4 +8,4 @@ def philosophers_stone() -> str:
 
 
 def elixir_of_life() -> str:
-    return "Elixir of life: eternal youth achieved"
+    return "Elixir of life: eternal youth achieved!"

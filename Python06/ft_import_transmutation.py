@@ -2,9 +2,9 @@ def import_demonstration():
 
     print("Method 1 - Full module import:")
     import alchemy.elements
-    print(f"alchemy.elements.create_fire(): {alchemy.elements.create_fire()}\n")
+    print(f"alchemy.elements.create_fire(): {alchemy.elements.create_fire()}")
 
-    print("Method 2 - Specific function import:")
+    print("\nMethod 2 - Specific function import:")
     from alchemy.elements import create_water
     print(f"create_water(): {create_water()}\n")
 
