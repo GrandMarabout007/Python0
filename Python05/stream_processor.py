@@ -6,7 +6,7 @@
 #  By: rschimme <rschimme@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/02/17 13:35:08 by rschimme        #+#    #+#               #
-#  Updated: 2026/02/18 15:58:53 by rschimme        ###   ########.fr        #
+#  Updated: 2026/02/23 17:35:54 by rschimme        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -107,25 +107,25 @@ class LogProcessor(DataProcessor):
 
 
 def stream_processor():
-    data1 = [1, 5, 6, 8]
+    data1: list[int] = [1, 5, 6, 8]
     print("Initializing Numeric Processor...")
     nprocessor = NumericProcessor()
     print(f"Processing data: {data1}")
     print(nprocessor.format_output(nprocessor.process(data1)))
     print()
-    data2 = "Hello Nexus World"
+    data2: str = "Hello Nexus World"
     print("Initializing Text Processor...")
     tprocessor = TextProcessor()
     print(f"Processing data: {data2}")
     print(tprocessor.format_output(tprocessor.process(data2)))
     print()
-    data3 = "ERROR: Connection timeout"
+    data3: str = "ERROR: Connection timeout"
     print("Initializing Log Processor...")
     lprocessor = LogProcessor()
     print(f"Processing data: {data3}")
     print(lprocessor.format_output(lprocessor.process(data3)))
     print("\n=== Polymorphic Processing Demo ===")
-    data_to_process = [
+    data_to_process: list = [
         (lprocessor, "INFO: System ready"),
         (tprocessor, "Hello guys"),
         (nprocessor, [1, 5, 8, 9]),
