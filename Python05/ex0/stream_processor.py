@@ -6,7 +6,7 @@
 #  By: rschimme <rschimme@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/02/17 13:35:08 by rschimme        #+#    #+#               #
-#  Updated: 2026/02/23 17:35:54 by rschimme        ###   ########.fr        #
+#  Updated: 2026/02/24 17:34:14 by rschimme        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -53,7 +53,7 @@ data as dict[int]")
 
 
 class TextProcessor(DataProcessor):
-    def process(self, data) -> str:
+    def process(self, data: Any) -> str:
         if self.validate(data) is True:
             text_len = len(data)
             text_word = len(data.split())
@@ -76,7 +76,7 @@ class TextProcessor(DataProcessor):
 
 
 class LogProcessor(DataProcessor):
-    def process(self, data) -> str:
+    def process(self, data: Any) -> str:
         if self.validate(data) is True:
             content = data.split(" ", 1)
             if content[0] == "ERROR:":
