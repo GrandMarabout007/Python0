@@ -6,7 +6,7 @@
 #  By: rschimme <rschimme@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/02/19 15:10:47 by rschimme        #+#    #+#               #
-#  Updated: 2026/02/24 17:37:48 by rschimme        ###   ########.fr        #
+#  Updated: 2026/03/02 15:24:06 by rschimme        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -48,10 +48,10 @@ class SensorStream(DataStream):
         temp_occur: int = 0
         humidity_occur: int = 0
         pressure_occur: int = 0
-        self.readings_count: int = 0
-        self.total_temp: float = 0.0
-        self.total_humidity: float = 0
-        self.total_pressure: float = 0
+        self.readings_count = 0
+        self.total_temp = 0.0
+        self.total_humidity = 0
+        self.total_pressure = 0
         for data in data_batch:
             try:
                 stuff, number = data.split(':')
@@ -128,7 +128,7 @@ class TransactionStream(DataStream):
         print(f", Type: {self.stream_type}")
 
     def process_batch(self, data_batch: List[Any]) -> str:
-        self.net_flow: float = 0
+        self.net_flow = 0
         for data in data_batch:
             try:
                 stuff, number = data.split(':')
@@ -175,9 +175,9 @@ class EventStream(DataStream):
         print(f", Type: {self.stream_type}")
 
     def process_batch(self, data_batch: List[Any]) -> str:
-        self.error: int = 0
-        self.login: int = 0
-        self.logout: int = 0
+        self.error = 0
+        self.login = 0
+        self.logout = 0
         for data in data_batch:
             if data == "login":
                 self.login += 1
@@ -231,6 +231,7 @@ class StreamProcessor:
             if isinstance(stream, DataStream):
                 print(stream.process_batch(data))
 
+    @staticmethod
     def filter_all(streams: dict, keyword: str) -> None:
         for stream, data in streams.items():
             if isinstance(stream, DataStream):
@@ -238,7 +239,7 @@ class StreamProcessor:
 
 
 def data_stream() -> None:
-    processor: StreamProcessor = StreamProcessor
+    processor: type[StreamProcessor] = StreamProcessor
     stream_dict: dict[Any, list[Any]] = {}
     for name, data in streams.items():
         stream_id, number = name.split('_', 1)

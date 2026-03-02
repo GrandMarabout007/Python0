@@ -6,7 +6,7 @@
 #  By: rschimme <rschimme@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/02/17 13:35:08 by rschimme        #+#    #+#               #
-#  Updated: 2026/02/24 17:34:14 by rschimme        ###   ########.fr        #
+#  Updated: 2026/03/02 15:18:45 by rschimme        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -83,6 +83,9 @@ class LogProcessor(DataProcessor):
                 return (f"[ALERT] ERROR level detected: {content[1]}")
             elif content[0] == "INFO:":
                 return (f"[INFO] INFO level detected: {content[1]}")
+            else:
+                return ("[ALERT], ERROR level detected: not Log data as \
+<keyword: text> ")
         else:
             return ("[ALERT], ERROR level detected: not Log data as \
 <keyword: text> ")
@@ -106,7 +109,7 @@ class LogProcessor(DataProcessor):
         return super().format_output(result)
 
 
-def stream_processor():
+def stream_processor() -> None:
     data1: list[int] = [1, 5, 6, 8]
     print("Initializing Numeric Processor...")
     nprocessor = NumericProcessor()

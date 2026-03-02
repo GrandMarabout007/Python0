@@ -110,6 +110,7 @@ class TransformStage:
             transformed["temp_sensor_logs"] = [25.0, 24.8,
                                                25.0, 25.1,
                                                24.4, 24.2]
+            print(transformed)
             print("Transform: Aggregated and filtered")
         return transformed
 
@@ -151,6 +152,7 @@ class OutputStage:
                 output += "s"
             avg_temp: float = 0.0
             if nb_readings > 0:
+                print(data["temp_sensor_logs"])
                 avg_temp = sum(data["temp_sensor_logs"]) / nb_readings
             output += f", avg: {avg_temp}°C"
         return output
@@ -279,7 +281,7 @@ def main() -> None:
 
     print("\n=== Multi-Format Data Processing ===")
     data: dict[str, Any] = {
-        "JSON": {"sensor": "temp", "value": 23.5, "unit": "°C"},
+        "JSON": {"snsor": "temp", "value": 23.5, "unit": "°C"},
         "CSV": "user,action,timestamp",
         "Stream": "Real-time sensor stream",
     }
