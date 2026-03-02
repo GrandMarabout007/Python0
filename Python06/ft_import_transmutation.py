@@ -1,4 +1,4 @@
-def import_demonstration():
+def import_demonstration() -> None:
 
     print("Method 1 - Full module import:")
     import alchemy.elements

@@ -11,7 +11,8 @@ def strengh_potion() -> str:
 
 
 def invisibility_potion() -> str:
-    return f"Invisibility potion brewed with {create_air()} and {create_water()}"
+    return f"Invisibility potion brewed with {create_air()} and \
+{create_water()}"
 
 
 def wisdom_potion() -> str:

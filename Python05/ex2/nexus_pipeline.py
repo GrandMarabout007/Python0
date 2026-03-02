@@ -42,12 +42,7 @@ class InputStage():
                 if len(splits) <= 1:
                     raise CustomError("1", "wrong data, CSV should countain \
 inputs separated by a comma")
-                parsed_data = {
-                    "user": 0,
-                    "action": 0,
-                    "timestamp": 0,
-                }
-                return {"adapter": "CSV", "data": parsed_data}
+                return data
             else:
                 raise CustomError("1", "wrong data, CSV should countain 3 \
 inputs separated by a comma")
@@ -97,13 +92,20 @@ sensor, value and unit")
             print("Transform: Aggregated and filtered")
 
         elif transformed["adapter"] == "CSV":
-
-            transformed["data"]
-            for key in ("user", "action", "timestamp"):
-                if key not in transformed["data"]:
+            transformed["data"] = {
+                    "words": data["data"],
+                    "parsed_data": {
+                        "user": 0,
+                        "action": 0,
+                        "timestamp": 0,
+                    }
+                }
+            for word in transformed["data"]["words"].split(','):
+                if word in ("user", "action", "timestamp"):
+                    transformed["data"]["parsed_data"][word] += 1
+                else:
                     raise CustomError("Transform", "CSV should countain user, \
-action and timestamp input only")
-                transformed["data"][key] += 1
+# action and timestamp input only")
             print("Transform: Parsed and structured data")
 
         return transformed
@@ -130,7 +132,7 @@ class OutputStage():
             output += f"({data['range']} range)"
 
         elif data["adapter"] == "CSV":
-            user_actions: int = (data["data"]["user"])
+            user_actions: int = (data["data"]["parsed_data"]["user"])
             output += f"Output: User activity logged {user_actions} action"
             if user_actions > 1:
                 output += "s"

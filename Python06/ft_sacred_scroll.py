@@ -1,11 +1,13 @@
 import alchemy
 
 
-def scroll_demonstration():
+def scroll_demonstration() -> None:
     print("Testing direct module access:")
     print(f"alchemy.elements.create_fire(): {alchemy.elements.create_fire()}")
-    print(f"alchemy.elements.create_water(): {alchemy.elements.create_water()}")
-    print(f"alchemy.elements.create_earth(): {alchemy.elements.create_earth()}")
+    print(f"alchemy.elements.create_water(): \
+{alchemy.elements.create_water()}")
+    print(f"alchemy.elements.create_earth(): \
+{alchemy.elements.create_earth()}")
     print(f"alchemy.elements.create_air(): {alchemy.elements.create_air()}")
 
     print("\nTesting package-level access (controlled by __init__.py):")
