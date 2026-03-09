@@ -8,7 +8,7 @@ class AggressiveStrategy (GameStrategy):
         self.strat_name = 'Aggressive'
 
     def execute_turn(self, hand: list, battlefield: list) -> dict:
-        mana_used = 0
+        mana_used: int = 0
         if not hand:
             raise ValueError
         if not battlefield:

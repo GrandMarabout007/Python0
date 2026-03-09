@@ -39,7 +39,7 @@ class GameEngine:
         for card in self.__hand:
             if isinstance(card, CreatureCard):
                 self.total_damage += card.attack
-
+        turn_result['damage_dealt'] = self.total_damage
         return turn_result
 
     def get_engine_status(self) -> dict:

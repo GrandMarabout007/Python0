@@ -184,9 +184,9 @@ class FantasyCardfactory(CardFactory):
         return new_artifact
 
     def create_themed_deck(self, size: int) -> dict:
-        available = (self.data['creatures']
-                     + self.data['spells']
-                     + self.data['artifacts'])
+        available: list = (self.data['creatures']
+                           + self.data['spells']
+                           + self.data['artifacts'])
         deck: dict = {}
         if size > 60:
             print("error, deck is 60 card max")

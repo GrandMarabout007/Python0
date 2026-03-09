@@ -33,4 +33,3 @@ class CreatureCard(Card):
         return super().get_card_info() | {"type": self.type,
                                           "attack": self.attack,
                                           "health": self.health}
-

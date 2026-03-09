@@ -10,11 +10,10 @@ def main():
     print('Configuring Fantasy Card Game...')
     factory = FantasyCardfactory()
     strategy = AggressiveStrategy()
-    print(factory.get_supported_types())
-
-    print()
     engine = GameEngine()
     engine.configure_engine(factory, strategy)
+    print(factory.get_supported_types())
+
     print("\nTurn execution:")
     print('Actions:', engine.simulate_turn())
 
