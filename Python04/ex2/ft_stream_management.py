@@ -6,7 +6,7 @@
 #  By: rschimme <rschimme@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/02/16 19:08:38 by rschimme        #+#    #+#               #
-#  Updated: 2026/02/16 20:13:29 by rschimme        ###   ########.fr        #
+#  Updated: 2026/03/09 19:17:22 by rschimme        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -16,7 +16,7 @@ def stream_management() -> None:
     status_report: str = input("Input Stream active. Enter status report: ")
 
     print(f"[STANDARD] Archive status from {archivist_ID}: {status_report}",
-          file=sys.stdout)
+          )
     print("[ALERT] System diagnostic: Communication channels verified",
           file=sys.stderr)
     print("[STANDARD] Data transmission complete\n", file=sys.stdout)

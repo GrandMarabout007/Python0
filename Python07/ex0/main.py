@@ -4,6 +4,7 @@ from ex0.CreatureCard import CreatureCard
 def main():
 
     print("\n=== DataDeck Card Foundation ===\n")
+
     game_state: dict = {}
     Creature_1: dict = {
         "name": 'Fire Dragon',
