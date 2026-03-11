@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "robin_tool"
+version = "0.1.0"
+description = "Loading Programs - Matrix Data Analysis"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pandas = "2.1.0"
+requests = "2.31.0"
+matplotlib = "3.7.2"
+numpy = "1.25.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
