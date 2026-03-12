@@ -3,7 +3,8 @@ from dotenv import load_dotenv
 
 
 def main():
-    print()
+
+    print('\nORACLE STATUS: Reading the Matrix...\n')
 
     load_dotenv()
     script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -18,14 +19,14 @@ def main():
     for key in infos:
         env_var_name = infos[key][0]
         infos[key][1] = os.getenv(env_var_name)
-
+    print('Configuration loaded:')
     for info in infos.values():
         if info[1] is not None:
             print(f'{info[0]}: {info[1]}')
         else:
             print('[error]: [Missing] -', info[0])
 
-    print()
+    print('\nEnvironment security check:')
     if os.path.exists(dotenv_path):
         print("[OK] .env file properly configured")
     else:
